@@ -12,7 +12,9 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 
+import android.view.View;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 
 
 import java.util.ArrayList;
@@ -32,11 +34,20 @@ public class MainActivity extends AppCompatActivity {
     private List<User> userList;
     private EditText editText;
 
+    RelativeLayout content;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         editText = findViewById(R.id.editTextSearch);
+        content = findViewById(R.id.content);
+
+        final View to_add = getLayoutInflater().inflate(R.layout.empty_view,
+                content,false);
+
+        to_add.setVisibility(View.VISIBLE);
+        //content.addView(to_add);
 
         userList = new ArrayList<>();
 
@@ -67,6 +78,27 @@ public class MainActivity extends AppCompatActivity {
 
                 userAdapter.getFilter().filter(charSequence.toString().trim());
 
+                userAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+                    @Override
+                    public void onChanged() {
+                        super.onChanged();
+                        if(userAdapter.getItemCount() < 1){
+                            System.out.println("este es el sices: " + content.getChildCount());
+                            if(content.getChildCount() < 3){
+                                content.addView(to_add);
+                            }
+
+                        }else {
+                            if(content.getChildCount() > 2){
+                                content.removeView(to_add);
+                            }
+                           //
+                            //if(content.getChildCount())
+                            //content.
+                            System.out.println("este es el no side: " + content.getChildCount());
+                        }
+                    }
+                });
 
             }
 
