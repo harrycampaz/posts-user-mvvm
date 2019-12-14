@@ -54,7 +54,6 @@ public class PostRepository {
             public void run() {
                 List<Post> postList = postDao.getPost(params.get("userId"));
                 if(postList.size() > 0){
-                    System.out.println("Desde la DB POST :" + postList.size());
                     mutableLiveData.postValue(postList);
                     progressDialog.dismiss();
                 }else {
