@@ -13,6 +13,7 @@ import java.util.Map;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+import co.com.ceiba.mobile.pruebadeingreso.R;
 import co.com.ceiba.mobile.pruebadeingreso.model.Post;
 import co.com.ceiba.mobile.pruebadeingreso.model.User;
 import co.com.ceiba.mobile.pruebadeingreso.source.local.PostDao;
@@ -43,7 +44,7 @@ public class PostRepository {
 
         progressDialog = new ProgressDialog(context);
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progressDialog.setMessage("Por favor espere...");
+        progressDialog.setMessage(context.getString(R.string.generic_message_progress));
         progressDialog.show();
 
         Executor executor = Executors.newSingleThreadExecutor();

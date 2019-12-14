@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+import co.com.ceiba.mobile.pruebadeingreso.R;
 import co.com.ceiba.mobile.pruebadeingreso.model.User;
 import co.com.ceiba.mobile.pruebadeingreso.source.local.StoreDatabaseHelper;
 import co.com.ceiba.mobile.pruebadeingreso.source.local.UserDao;
@@ -43,7 +44,7 @@ public class UserRepository {
 
         progressDialog = new ProgressDialog(context);
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progressDialog.setMessage("Por favor espere...");
+        progressDialog.setMessage(context.getString(R.string.generic_message_progress));
         progressDialog.show();
 
         Executor executor = Executors.newSingleThreadExecutor();
@@ -53,11 +54,11 @@ public class UserRepository {
             public void run() {
                 List<User> userList = userDao.getUsers();
                 if (userList.size() > 0) {
-                    System.out.println("Tamaño de Desde DB: " + userList.size());
+
                     mutableLiveData.postValue(userList);
                     progressDialog.dismiss();
                 }else {
-                    System.out.println("desde Retrofit");
+
 
                     DataServices userDataServices = RetrofitInstance.getDataServices();
                     Call<List<User>> call = userDataServices.getUsers();
@@ -97,33 +98,6 @@ public class UserRepository {
 
 
         return mutableLiveData;
-    }
-
-    private  static  class GetUserAsyncTask extends AsyncTask<Void, Void, Void> {
-
-        private UserDao userDAO;
-
-        public GetUserAsyncTask(UserDao userDAO){
-            this.userDAO = userDAO;
-        }
-
-        @Override
-        protected Void doInBackground(Void... users) {
-
-           // userDAO.getUsers();
-
-
-
-          //  System.out.println("AQUI ESTA HACIENDO LA PRUEBA: " + userDAO.getUsers().size());
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            System.out.println();
-        }
     }
 
     private  static  class InsertUserAsyncTask extends AsyncTask<User, Void, Void> {

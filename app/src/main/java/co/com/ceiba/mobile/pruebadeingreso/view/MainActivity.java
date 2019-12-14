@@ -83,19 +83,16 @@ public class MainActivity extends AppCompatActivity {
                     public void onChanged() {
                         super.onChanged();
                         if(userAdapter.getItemCount() < 1){
-                            System.out.println("este es el sices: " + content.getChildCount());
-                            if(content.getChildCount() < 3){
+                             if(content.getChildCount() < 3){
                                 content.addView(to_add);
+
                             }
 
                         }else {
                             if(content.getChildCount() > 2){
                                 content.removeView(to_add);
                             }
-                           //
-                            //if(content.getChildCount())
-                            //content.
-                            System.out.println("este es el no side: " + content.getChildCount());
+
                         }
                     }
                 });
