@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private UserAdapter userAdapter;
     private List<User> userList;
-    private EditText editText;
 
     RelativeLayout content;
 
@@ -40,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        editText = findViewById(R.id.editTextSearch);
+        EditText editText = findViewById(R.id.editTextSearch);
         content = findViewById(R.id.content);
 
         final View to_add = getLayoutInflater().inflate(R.layout.empty_view,
@@ -118,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerViewSearchResults);
 
-        userAdapter = new UserAdapter(this, userList);
+        userAdapter = new UserAdapter(userList);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
 

@@ -37,7 +37,6 @@ public class UserRepository {
         StoreDatabaseHelper storeDatabaseHelper = StoreDatabaseHelper.getInstance(application);
         userDao = storeDatabaseHelper.userDao();
 
-
     }
 
     public LiveData<List<User>> getLiveData(Context context) {

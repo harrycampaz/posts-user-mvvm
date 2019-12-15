@@ -75,7 +75,7 @@ public class PostActivity extends AppCompatActivity {
 
     private void showRecyclerView(List<Post> posts){
         recyclerView = findViewById(R.id.recyclerViewPostsResults);
-        postAdapter = new PostAdapter(this, posts);
+        postAdapter = new PostAdapter(posts);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(PostActivity.this);
 
         recyclerView.setLayoutManager(layoutManager);

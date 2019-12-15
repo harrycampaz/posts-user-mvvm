@@ -17,12 +17,11 @@ import co.com.ceiba.mobile.pruebadeingreso.view.holder.UserViewHolder;
 
 public class UserAdapter extends RecyclerView.Adapter<UserViewHolder> implements Filterable {
 
-    private Context context;
+
     public List<User> userList, filterList;
     CustomFilter filter;
 
-    public UserAdapter(Context context, List<User> userList) {
-        this.context = context;
+    public UserAdapter(List<User> userList) {
         this.userList = userList;
         this.filterList = userList;
     }
