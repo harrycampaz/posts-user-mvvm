@@ -45,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
         final View to_add = getLayoutInflater().inflate(R.layout.empty_view,
                 content,false);
 
-        to_add.setVisibility(View.VISIBLE);
-        //content.addView(to_add);
+        to_add.setVisibility(View.GONE);
+        content.addView(to_add);
 
         userList = new ArrayList<>();
 
@@ -82,15 +82,16 @@ public class MainActivity extends AppCompatActivity {
                     public void onChanged() {
                         super.onChanged();
                         if(userAdapter.getItemCount() < 1){
-                             if(content.getChildCount() < 3){
-                                content.addView(to_add);
 
-                            }
+
+                                content.getChildAt(2).setVisibility(View.VISIBLE);
+
+
 
                         }else {
-                            if(content.getChildCount() > 2){
-                                content.removeView(to_add);
-                            }
+
+                                content.getChildAt(2).setVisibility(View.GONE);
+
 
                         }
                     }
